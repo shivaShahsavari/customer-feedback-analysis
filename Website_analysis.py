@@ -139,24 +139,6 @@ fi = fi.reset_index()
 ax = fi[['feature', 'importance']].plot(kind='bar', figsize=(10,6), color="indigo", fontsize=13)
 plt.xticks(rotation=40)
 plt.show()
-'''
-   index                     feature  importance
-0       5                  FOUND_INFO    0.254089
-1       9                INFO_CLARITY    0.181886
-2       3                     BROWSER    0.112322
-3       4                VISIT_REASON    0.060209
-4       8            INFO_FINDABILITY    0.057450
-5      13        WEBSITE_LOADING_TIME    0.050931
-6       2                          OS    0.044328
-7      12              WEBSITE_DESIGN    0.042978
-8      11      CONV_DETAILS_OR_STATUS    0.042672
-9       1                      DEVICE    0.033394
-10      0                 DEVICE_TYPE    0.026967
-11      6       PREVIOUS_REQUEST_INFO    0.024418
-12     10             CONV_REP_OR_APP    0.024312
-13      7                 EFFORT_COST    0.023646
-14     14  X_GRADE_DETER_FACTOR_OTHER    0.020398
-'''
 
 ############ preprocessing data - second step ###############
 df_group=df[['FOUND_INFO','OS','INFO_CLARITY','BROWSER','VISIT_REASON','INFO_FINDABILITY','WEBSITE_LOADING_TIME','WEBSITE_DESIGN','WEBPAGE','ORIGIN',
@@ -171,7 +153,7 @@ df_group['INFO_FINDABILITY'].fillna('Null', inplace=True)
 df_group['WEBSITE_LOADING_TIME'].fillna('Null', inplace=True)
 df_group['WEBSITE_DESIGN'].fillna('Null', inplace=True)
 #print(df_group.columns)
-df_group['WEBPAGE1']=df_group['WEBPAGE'].replace(to_replace ='https://www.rvo.nl/',  value ='', regex = True)
+df_group['WEBPAGE1']=df_group['WEBPAGE'].replace(to_replace ='https://www.xxx.nl/',  value ='', regex = True)
 df_group['web_subCat']=df_group['WEBPAGE1'].replace(to_replace ='zoeken.+', value='zoeken',regex = True)
 df_group['web_subCat']=df_group['web_subCat'].replace(to_replace ='/.+', value='',regex = True)
 df_group['web_subCat']=df_group['web_subCat'].replace(to_replace ='subsidie-en-financieringswijzer.+', value='subsidie-en-financieringswijzer',regex = True)##135 categories
@@ -180,14 +162,14 @@ df_group['web_subCat']=df_group['web_subCat'].replace(to_replace ='coronavirus.+
 df_group['web_subCat']=df_group['web_subCat'].replace(to_replace ='vergunningen-online.+', value='vergunningen-online',regex = True)
 df_group['web_subCat']=df_group['web_subCat'].replace(to_replace ='documenten-publicaties.+', value='documenten-publicaties',regex = True)
 df_group['web_subCat']=df_group['web_subCat'].replace(to_replace ='octrooiportal.+', value='octrooiportal',regex = True)
-df_group['web_subCat']=df_group['web_subCat'].replace(to_replace ='contactformulier-rijksdienst-voor-ondernemend-nederland-rvonl-wssl.+',
- value='contactformulier-rijksdienst-voor-ondernemend-nederland-rvonl-wssl',regex = True)
+df_group['web_subCat']=df_group['web_subCat'].replace(to_replace ='contactformulier-rijksdienst-voor-ondernemend-nederland-xxxnl-wssl.+',
+ value='contactformulier-rijksdienst-voor-ondernemend-nederland-xxxnl-wssl',regex = True)
 df_group['web_subCat']=df_group['web_subCat'].replace(to_replace ='contactformulier-wssl.+', value='contactformulier-wssl',regex = True)
 df_group['web_subCat']=df_group['web_subCat'].replace(to_replace ='financiering-voor-ondernemers.+', value='financiering-voor-ondernemers',regex = True)
 df_group['web_subCat']=df_group['web_subCat'].replace(to_replace ='utm_campaign=.+', value='utm_campaign',regex = True)
 df_group['web_subCat']=df_group['web_subCat'].replace(to_replace ='financiering-voor-internationaal-ondernemen.+', value='financiering-voor-internationaal-ondernemen',regex = True)
 df_group['web_subCat']=df_group['web_subCat'].replace(to_replace ='onderwerpen.+', value='onderwerpen',regex = True)
-df_group['web_subCat']=df_group['web_subCat'].replace(to_replace ='', value='rvo.nl',regex = True)
+df_group['web_subCat']=df_group['web_subCat'].replace(to_replace ='', value='xxx.nl',regex = True)
 
 #print(df_group['web_subCat'].nunique())### distinct 63 sub Folder
 
